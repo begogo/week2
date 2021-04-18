@@ -1,3 +1,5 @@
+package 기초알고리즘B;
+
 import java.text.DecimalFormat;
 import java.util.Scanner;
 /**
