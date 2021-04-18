@@ -24,9 +24,13 @@ public class ProgramC {
         //입력값이 짝수면 1을 더한 홀수로 바꿔서 그 값을 마름모의 전체 라인 개수로 계산
         int n = (inputNumber%2 == 0) ? inputNumber+1 : inputNumber;
 
+        int upperTriangle = (n+1)/2; //윗쪽 삼각형 라인개수
+        int lowerTriangle = n - upperTriangle; //아랫쪽 삼각형 라인개수
+
+        //일반항 (초항 + i*d) 형태를 유지하는 방식으로 수식입력
         //마름모의 윗 부분. 마름모의 라인 1 ~ (n+1)/2 까지의 삼각형
-        for (int i = 0; i < (n+1)/2; i++){
-            for (int j = 0; j < ((n+1)/2)-1 + (i*(-1)); j++) {
+        for (int i = 0; i < upperTriangle; i++){
+            for (int j = 0; j < upperTriangle-1 + (i*(-1)); j++) {
                 System.out.print(" ");
             }
             for (int j = 0; j < 1 + (i*2); j++){
@@ -35,11 +39,11 @@ public class ProgramC {
             System.out.println();
         }
         //마름모의 아랫 부분. 윗 부분 제외한 역삼각형
-        for (int i = 0; i < (n - (n+1)/2); i++){
+        for (int i = 0; i < lowerTriangle; i++){
             for(int j = 0; j < 1 + (i*1); j++){
                 System.out.print(" ");
             }
-            for(int j = 0; j < (2*(n - (n+1)/2) - 1) + (i*(-2)); j++){
+            for(int j = 0; j < (2*lowerTriangle - 1) + (i*(-2)); j++){
                 System.out.print("*");
             }
             System.out.println();
