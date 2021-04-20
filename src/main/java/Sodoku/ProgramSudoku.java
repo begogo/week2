@@ -14,25 +14,30 @@ public class ProgramSudoku {
 
         Random rand = new Random();
 
-        for (int i=0; i<size; i++){
-            for(int k=0; k<size; k++){
+        reset: while(true) {
+            int loopCount = 0;
 
-                check: while(true){
-                    result[i][k] = rand.nextInt(9)+1;
+            for (int i = 0; i < size; i++) {
+                for (int k = 0; k < size; k++) {
 
-                    //가로줄 검사
-                    for (int col = k-1; col >= 0; col--) {
-                        if (result[i][k] == result[i][col]) {
-                            continue check;
+                    check: while (true) {
+                        result[i][k] = rand.nextInt(9) + 1;
+
+                        //가로줄 검사
+                        for (int col = k - 1; col >= 0; col--) {
+                            if (result[i][k] == result[i][col]) {
+                                continue check;
+                            }
                         }
-                    }
-                    //세로줄 검사
-                    for (int row = i-1; row >= 0; row--) {
-                        if (result[i][k] == result[row][k]) {
-                            continue check;
+                        //세로줄 검사
+                        for (int row = i - 1; row >= 0; row--) {
+                            if (result[i][k] == result[row][k]) {
+                                loopCount ++;
+                                if(loopCount > 200) continue reset;
+                                continue check;
+                            }
                         }
-                    }
-                    break;
+                        break;
 //                  //대각선 검사
 //                    if (i == k){
 //                        for (int diag = i-1; diag >= 0; diag--){
@@ -42,9 +47,11 @@ public class ProgramSudoku {
 //                        }
 //                    }
 
-                }
+                    }
 
-            }
+                }
+            }//i
+            break;
         }
 
         //스도쿠판 출력
