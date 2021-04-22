@@ -67,7 +67,7 @@ public class ProgramD {
 
     }
 }
-
+//2이상의 정수인지 검증
 class Verification {
     boolean isValid(String a) {
         for (int i = 0; i < a.length(); i++) {
